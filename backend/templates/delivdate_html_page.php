@@ -1,4 +1,0 @@
-<?php
-
-
-echo "FORM CON INPUT TEXT x DELOVERY DATE";

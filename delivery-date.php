@@ -22,6 +22,9 @@
 }
 
 
+define( 'WPPLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'WPPLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+
 // SHORTCODE STYLE
 function delivdate_include_style_and_scripts() {
 
@@ -42,7 +45,9 @@ add_shortcode('delivery-date','delivdate_product');
 
 
 // PLUGIN BACKEND
-include 'backend/delivery-date-backend.php';
+
+include( plugin_dir_path( __FILE__ ) . 'backend/delivery-date-backend.php' );
+
 
 
 

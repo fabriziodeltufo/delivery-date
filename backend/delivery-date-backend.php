@@ -1,16 +1,5 @@
 <?php
 
-// HTML PAGE 
-function delivdate_cb()
-{
-    // Double check user capabilities
-    if ( !current_user_can('manage_options') ) {
-      return;
-    }
-    include 'templates/delivdate_html_page.php' ;
-}
-
-
 // ADMIN PLUGIN MENU
 function delivdate_plugin_menu()
 {
@@ -28,4 +17,19 @@ add_action( 'admin_menu', 'delivdate_plugin_menu' );
 
 
 
+// HTML PAGE 
+function delivdate_cb()
+{
+    // Double check user capabilities
+    if ( !current_user_can('manage_options') ) {
+      return;
+    }
 
+
+     
+    include( plugin_dir_path( __FILE__ ) . 'delivery-date-setting-fields.php' );  // call to setting fields for form
+    
+    include( WPPLUGIN_DIR . 'templates/delivery-date-html-page.php' ); // call to html page  - form
+
+
+}
