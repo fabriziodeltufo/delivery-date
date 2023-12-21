@@ -30,9 +30,6 @@ function delivdate_include_style_and_scripts() {
 add_action( 'wp_enqueue_scripts', 'delivdate_include_style_and_scripts' );
 
 
-
-
-
 // PLUGIN SHORTCODE
 function delivdate_product(){
 
@@ -43,6 +40,9 @@ function delivdate_product(){
 }
 add_shortcode('delivery-date','delivdate_product');
 
+
+// PLUGIN BACKEND
+include 'backend/delivery-date-backend.php';
 
 
 
