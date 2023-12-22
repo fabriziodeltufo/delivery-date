@@ -1,6 +1,6 @@
 <?php
 /*
-Delivery Date setting field
+Delivery Date settings:  option / section / field
 */
 
 function delivdate_settings_cb() {
@@ -10,27 +10,28 @@ function delivdate_settings_cb() {
     // SETTING THE OPTION
     // If option is not present, it is created in wp-options table.
     if ( !get_option( 'delivery_date' ) ) {
-        add_option( 'delivery_date' );
-
-
-
-
+        add_option( 'delivery_date' ) ;
     }
 
-    // SETTING SECTION : Define ( at least ) one section is mandatory
+    // $options = get_option( 'delivery_date' );
+    // die($options);
+
+
+
+    // SETTING SECTION : Define ( at least ) one section
 
     add_settings_section(
         // Unique identifier for the section
-        'delivdate_settings_section',
+        'delivdate_section',
         // Section Title
         __( 'Delivery Date Section', 'delivdate' ),
         // Callback for an optional description
-        'delivdate_settings_section_callback',
+        'delivdate_section_cb',
         // Admin page to add section to
-        'delivdate'
+        'delivdate_page'
     );
 
-    function delivdate_settings_section_callback() {
+    function delivdate_section_cb() {
         esc_html_e( 'Insert the number of days after the order to deliver the item', 'delivdate' );
     }
 
@@ -42,21 +43,24 @@ function delivdate_settings_cb() {
     // SETTING FIELD
     add_settings_field(
         // Unique identifier for field
-        'delivdate_settings_field',
+        'delivdate_field',
         // Field Title
         __( 'Delivery Date', 'delivdate' ),
         // Callback for field markup
-        'delivdate_settings_field_callback',
+        'delivdate_field_cb',
         // Page to go on
-        'delivdate',
+        'delivdate_page',
         // Section to go in
-        'delivdate_settings_section',
+        'delivdate_section',
 
         array( 'class' => 'delivery-date' )
 
     );
 
-    function delivdate_settings_field_callback() {
+
+
+
+    function delivdate_field_cb() {
 
         $options = get_option( 'delivery_date' );
 
@@ -66,15 +70,13 @@ function delivdate_settings_cb() {
             $deliveryDate = esc_html( $options[ 'delivery_date' ] );
         }
 
-        // else {
-        //   $cotd_field = get_option( 'admin_email' );
-        // Settings: Administration Email Address
-        //
-        // }
-
-        echo '<input REQUIRED type="text" id="" name="delivdate_settings[delivery_date]" value="' . $deliveryDate . '" />';
+        echo '<input REQUIRED type="text" name="delivdate_settings[delivery_date]" value="$deliveryDate" />';
 
     }
+
+
+
+
 
     // REGISTERING THE SETTINGS //
     register_setting(

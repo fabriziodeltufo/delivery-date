@@ -22,31 +22,43 @@
 }
 
 
-define( 'WPPLUGIN_URL', plugin_dir_url( __FILE__ ) );
+// define( 'WPPLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'WPPLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
+
 // SHORTCODE STYLE
-function delivdate_include_style_and_scripts() {
+function delivdate_style_and_scripts() {
 
 	wp_enqueue_style( 'delivdate-style', plugins_url( 'style.css', __FILE__ ) );
 }
-add_action( 'wp_enqueue_scripts', 'delivdate_include_style_and_scripts' );
+add_action( 'wp_enqueue_scripts', 'delivdate_style_and_scripts' );
+
 
 
 // PLUGIN SHORTCODE
-function delivdate_product(){
+function delivdate_shortcode(){
 
-    $deliver = Date('d.m.y', strtotime('+3 days'));
 
-    return ' <p class="delivery-date">🚚 Ordina oggi e ricevi il <strong>'. $deliver.'</strong></p>';
+    $numDays = get_option( 'delivery_date' );
+    $deliverDate = Date('d.m.y' , strtotime( '+' . $numDays . 'days') );
+
+    return ' <p class="delivery-date">🚚 Ordina oggi e ricevi il <strong>'. $deliverDate.'</strong></p>';
 
 }
-add_shortcode('delivery-date','delivdate_product');
+add_shortcode('delivery-date','delivdate_shortcode');
 
 
-// PLUGIN BACKEND
 
-include( plugin_dir_path( __FILE__ ) . 'backend/delivery-date-backend.php' );
+
+
+// PLUGIN BACKEND 
+include( WPPLUGIN_DIR . 'backend/delivery-date-menu.php' );
+include( WPPLUGIN_DIR . 'backend/delivery-date-settings.php' );
+
+
+
+
+
 
 
 
