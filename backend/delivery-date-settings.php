@@ -13,10 +13,6 @@ function delivdate_settings_cb() {
         add_option( 'delivery_date' ) ;
     }
 
-    // $options = get_option( 'delivery_date' );
-    // die($options);
-
-
 
     // SETTING SECTION : Define ( at least ) one section
 
@@ -64,13 +60,13 @@ function delivdate_settings_cb() {
 
         $options = get_option( 'delivery_date' );
 
-        $deliveryDate = '';
+        // $deliveryDate = '';
 
-        if ( isset( $options[ 'delivery_date' ] ) ) {
-            $deliveryDate = esc_html( $options[ 'delivery_date' ] );
-        }
+        // if ( isset( $options[ 'delivery_date' ] ) ) {
+        //     $deliveryDate = esc_html( $options[ 'delivery_date' ] );
+        // }
 
-        echo '<input REQUIRED type="text" name="delivdate_settings[delivery_date]" value="$deliveryDate" />';
+        echo '<input REQUIRED type="text" name="delivery_date" value="' . $options . '" />';
 
     }
 
@@ -80,8 +76,8 @@ function delivdate_settings_cb() {
 
     // REGISTERING THE SETTINGS //
     register_setting(
-        'delivdate_settings',
-        'delivdate_settings'
+        'delivdate_field',
+        'delivery_date'
     );
 
 }

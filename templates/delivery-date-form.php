@@ -7,11 +7,11 @@
     <form method="post" action="options.php">
 
         <!-- Display necessary hidden fields for settings -->
-        <?php settings_fields( 'delivdate_setting_field' );
+        <?php settings_fields( 'delivdate_field' );
     ?>
 
         <!-- Display the settings sections for the page -->
-        <?php do_settings_sections( 'delivdate_setting_section' );
+        <?php do_settings_sections( 'delivdate_page' );
         
     ?>
 
