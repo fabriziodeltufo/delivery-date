@@ -23,7 +23,7 @@ function delivdate_plugin_menu()
         'manage_options', // capability
         'delivdate', // plugin text domain / menu-slug
         'delivdate_template_cb', // callback fx to output the content (form in the page)
-        'dashicons-admin-site', // plugin menu icon
+        'dashicons-menu', // plugin menu icon
         0 // menu position in the sidebar
     );
 }

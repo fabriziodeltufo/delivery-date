@@ -24,12 +24,15 @@
 
 // define( 'WPPLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'WPPLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'WPPLUGIN_URL', plugin_dir_url( __FILE__ ) );
+
+
 
 
 // SHORTCODE STYLE
 function delivdate_style_and_scripts() {
 
-	wp_enqueue_style( 'delivdate-style', plugins_url( 'style.css', __FILE__ ) );
+	wp_enqueue_style( 'delivdate-style', WPPLUGIN_URL . 'css/style.css' );
 }
 add_action( 'wp_enqueue_scripts', 'delivdate_style_and_scripts' );
 
