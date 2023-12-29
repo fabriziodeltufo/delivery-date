@@ -1,7 +1,6 @@
 <?php
 
-
-// PLUGIN FORM 
+// PLUGIN FORM
 function delivdate_template_cb()
 {
     // Double check user capabilities
@@ -10,7 +9,6 @@ function delivdate_template_cb()
     }
 
     include( WPPLUGIN_DIR . 'templates/delivery-date-form.php' ); // call to form
-  
 }
 
 
@@ -32,4 +30,4 @@ function delivdate_plugin_menu()
 add_action( 'admin_menu', 'delivdate_plugin_menu' );
 
 
-
+ ?>

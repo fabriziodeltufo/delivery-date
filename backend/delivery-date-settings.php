@@ -16,6 +16,10 @@ function delivdate_settings_cb() {
 
     // SETTING SECTION : Define ( at least ) one section
 
+    function delivdate_section_cb() {
+        esc_html_e( 'Insert the number of days after the order to deliver the item', 'delivdate' );
+    }
+
     add_settings_section(
         // Unique identifier for the section
         'delivdate_section',
@@ -27,16 +31,21 @@ function delivdate_settings_cb() {
         'delivdate_page'
     );
 
-    function delivdate_section_cb() {
-        esc_html_e( 'Insert the number of days after the order to deliver the item', 'delivdate' );
-    }
-
-
-
 
 
 
     // SETTING FIELD
+    function delivdate_field_cb() {
+        $options = get_option( 'delivery_date' );
+
+        // $deliveryDate = '';
+
+        // if ( isset( $options[ 'delivery_date' ] ) ) {
+        //     $deliveryDate = esc_html( $options[ 'delivery_date' ] );
+        // }
+        echo '<input REQUIRED type="text" name="delivery_date" value="' . $options . '" />';
+    }
+
     add_settings_field(
         // Unique identifier for field
         'delivdate_field',
@@ -55,29 +64,10 @@ function delivdate_settings_cb() {
 
 
 
-
-    function delivdate_field_cb() {
-
-        $options = get_option( 'delivery_date' );
-
-        // $deliveryDate = '';
-
-        // if ( isset( $options[ 'delivery_date' ] ) ) {
-        //     $deliveryDate = esc_html( $options[ 'delivery_date' ] );
-        // }
-
-        echo '<input REQUIRED type="text" name="delivery_date" value="' . $options . '" />';
-
-    }
-
-
-
-
-
     // REGISTERING THE SETTINGS //
     register_setting(
-        'delivdate_field',
-        'delivery_date'
+        'delivdate_field', // nome del campo nel DB
+        'delivery_date' // valore campo della input nella form
     );
 
 }

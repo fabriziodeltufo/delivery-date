@@ -6,17 +6,21 @@
 
     <form method="post" action="options.php">
 
+        <!-- Display the settings sections for the page -->
+        <?php do_settings_sections( 'delivdate_page' );
+
+  ?>
+
         <!-- Display necessary hidden fields for settings -->
         <?php settings_fields( 'delivdate_field' );
     ?>
 
-        <!-- Display the settings sections for the page -->
-        <?php do_settings_sections( 'delivdate_page' );
-        
-    ?>
+
 
         <!-- Default Submit Button -->
         <?php submit_button(); ?>
+        <!-- Status -->
+        <?php settings_errors() ?>
     </form>
 
     <hr>
