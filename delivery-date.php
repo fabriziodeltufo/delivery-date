@@ -10,7 +10,7 @@
 * Author URI:        https://github.com/fabriziodeltufo
 * License:           GPL v2 or later
 * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
-* Text Domain:       delivdate
+* Text Domain:       fdtdd
 * Domain Path:       /languages
 */
 
@@ -21,42 +21,40 @@
 	exit; // Exit if accessed directly
 }
 
-
-// define( 'WPPLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'WPPLUGIN_DIR', plugin_dir_path( __FILE__ ) );
-define( 'WPPLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'FDTDD_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'FDTDD_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 
 
 
 // SHORTCODE STYLE
-function delivdate_style_and_scripts() {
+function fdtdd_style() {
 
-	wp_enqueue_style( 'delivdate-style', WPPLUGIN_URL . 'css/style.css' );
+	wp_enqueue_style( 'fdtdd-style', FDTDD_PLUGIN_URL . 'css/style.css' );
 }
-add_action( 'wp_enqueue_scripts', 'delivdate_style_and_scripts' );
+add_action( 'wp_enqueue_scripts', 'fdtdd_style' );
 
 
 
 // PLUGIN SHORTCODE
-function delivdate_shortcode(){
+function fdtdd_shortcode(){
 
 
-    $numDays = get_option( 'delivery_date' );
+    $numDays = get_option( 'fdtdd_delivery_date' );
     $deliverDate = Date('d.m.y' , strtotime( '+' . $numDays . 'days') );
 
     return ' <p class="delivery-date">🚚 Ordina oggi e ricevi il <strong>'. $deliverDate.'</strong></p>';
 
 }
-add_shortcode('delivery-date','delivdate_shortcode');
+add_shortcode('delivery-date','fdtdd_shortcode');
 
 
 
 
 
 // PLUGIN BACKEND 
-include( WPPLUGIN_DIR . 'backend/delivery-date-menu.php' );
-include( WPPLUGIN_DIR . 'backend/delivery-date-settings.php' );
+include( FDTDD_PLUGIN_DIR . 'backend/delivery-date-menu.php' );
+include( FDTDD_PLUGIN_DIR . 'backend/delivery-date-settings.php' );
 
 
 

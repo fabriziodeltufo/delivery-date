@@ -3,60 +3,60 @@
 Delivery Date settings:  option / section / field
 */
 
-function delivdate_settings_cb() {
+function fdtdd_settings_cb() {
 
 
 
     // SETTING THE OPTION
     // If option is not present, it is created in wp-options table.
-    if ( !get_option( 'delivery_date' ) ) {
-        add_option( 'delivery_date' ) ;
+    if ( !get_option( 'fdtdd_delivery_date' ) ) {
+        add_option( 'fdtdd_delivery_date' ) ;
     }
 
 
     // SETTING SECTION : Define ( at least ) one section
 
-    function delivdate_section_cb() {
-        esc_html_e( 'Insert the number of days after the order to deliver the item', 'delivdate' );
+    function fdtdd_section_cb() {
+        esc_html_e( 'Insert the number of days after the order to deliver the item', 'fdtdd' );
     }
 
     add_settings_section(
         // Unique identifier for the section
-        'delivdate_section',
+        'fdtdd_section',
         // Section Title
-        __( 'Delivery Date Section', 'delivdate' ),
+        __( 'Delivery Date Section', 'fdtdd' ),
         // Callback for an optional description
-        'delivdate_section_cb',
+        'fdtdd_section_cb',
         // Admin page to add section to
-        'delivdate_page'
+        'fdtdd_page'
     );
 
 
 
 
     // SETTING FIELD
-    function delivdate_field_cb() {
-        $options = get_option( 'delivery_date' );
+    function fdtdd_field_cb() {
+        $options = get_option( 'fdtdd_delivery_date' );
 
         // $deliveryDate = '';
 
         // if ( isset( $options[ 'delivery_date' ] ) ) {
         //     $deliveryDate = esc_html( $options[ 'delivery_date' ] );
         // }
-        echo '<input REQUIRED type="text" name="delivery_date" value="' . $options . '" />';
+        echo '<input REQUIRED type="text" name="fdtdd_delivery_date" value="' . $options . '" />';
     }
 
     add_settings_field(
         // Unique identifier for field
-        'delivdate_field',
+        'fdtdd_field',
         // Field Title
-        __( 'Delivery Date', 'delivdate' ),
+        __( 'Delivery Date', 'fdtdd' ),
         // Callback for field markup
-        'delivdate_field_cb',
+        'fdtdd_field_cb',
         // Page to go on
-        'delivdate_page',
+        'fdtdd_page',
         // Section to go in
-        'delivdate_section',
+        'fdtdd_section',
 
         array( 'class' => 'delivery-date' )
 
@@ -66,10 +66,10 @@ function delivdate_settings_cb() {
 
     // REGISTERING THE SETTINGS //
     register_setting(
-        'delivdate_field', // nome del campo nel DB
-        'delivery_date' // valore campo della input nella form
+        'fdtdd_field', // settings_field
+        'fdtdd_delivery_date' // input text field nzme
     );
 
 }
 
-add_action( 'admin_init', 'delivdate_settings_cb' );
+add_action( 'admin_init', 'fdtdd_settings_cb' );
