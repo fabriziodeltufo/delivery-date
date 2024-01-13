@@ -8,7 +8,7 @@ function fdtdd_template_cb()
       return;
     }
 
-    include( FDTDD_PLUGIN_DIR . 'templates/delivery-date-form.php' ); // call to form
+    include( FDTDD_PLUGIN_DIR . 'backend/template/delivery-date-form.php' ); // call to form
 }
 
 

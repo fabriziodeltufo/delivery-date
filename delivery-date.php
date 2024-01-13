@@ -26,10 +26,10 @@ define( 'FDTDD_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 
 
-// SHORTCODE STYLE
+// SHORTCODE FRONT END STYLE
 function fdtdd_style() {
 
-	wp_enqueue_style( 'fdtdd-style', FDTDD_PLUGIN_URL . 'css/style.css' );
+	wp_enqueue_style( 'fdtdd-style', FDTDD_PLUGIN_URL . 'frontend/css/style.css' );
 }
 add_action( 'wp_enqueue_scripts', 'fdtdd_style' );
 
@@ -41,8 +41,10 @@ function fdtdd_shortcode(){
 
     $numDays = get_option( 'fdtdd_delivery_date' );
     $deliverDate = Date('d.m.y' , strtotime( '+' . $numDays . 'days') );
+    $deliveryText = '🚚 Order now and receive on : ';
 
-    return ' <p class="delivery-date">🚚 Ordina oggi e ricevi il <strong>'. $deliverDate.'</strong></p>';
+
+    return ' <p class="delivery-date">' . $deliveryText . '<strong>'. $deliverDate.'</strong></p>';
 
 }
 add_shortcode('delivery-date','fdtdd_shortcode');
